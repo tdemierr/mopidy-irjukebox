@@ -12,8 +12,8 @@ def get_version(filename):
 
 
 setup(
-    name='mopidy-irjukebox',
-    version=get_version('mopidy_mopidy_irjukebox/__init__.py'),
+    name='Mopidy-Irjukebox',
+    version=get_version('mopidy_irjukebox/__init__.py'),
     url='https://github.com/tdemierr/mopidy-irjukebox',
     license='Apache License, Version 2.0',
     author='Tim',
@@ -30,7 +30,7 @@ setup(
     ],
     entry_points={
         'mopidy.ext': [
-            'mopidy_irjukebox = mopidy_mopidy_irjukebox:Extension',
+            'irjukebox = mopidy_irjukebox:Extension',
         ],
     },
     classifiers=[

@@ -1,28 +1,27 @@
 sudo: false
-
 language: python
-
 python:
-  - "2.7_with_system_site_packages"
-
+- 2.7_with_system_site_packages
 addons:
   apt:
     sources:
-      - mopidy-stable
+    - mopidy-stable
     packages:
-      - mopidy
-
+    - mopidy
 env:
-  - TOX_ENV=py27
-  - TOX_ENV=flake8
-
+- TOX_ENV=py27
+- TOX_ENV=flake8
 install:
-  - "pip install tox"
-
+- pip install tox
 script:
-  - "tox -e $TOX_ENV"
-
+- tox -e $TOX_ENV
 after_success:
-  - "if [ $TOX_ENV == 'py27' ]; then pip install coveralls; coveralls; fi"
-
-
+- if [ $TOX_ENV == 'py27' ]; then pip install coveralls; coveralls; fi
+deploy:
+  provider: pypi
+  user: tdemierr
+  password:
+    secure: U9NCaUxcO6Yk3h3sU9KblfdInsogruja4tXBk87lW+vaZwnYEwbsgUvTjj9qIzG+BzAVsHFl87aAU7OBFRE4ZlDkHcDKZNbWvoLdZ0wUQ1ZirOGNWoEvVKFaBWo1lUJGvY60CN3+um/Eo81vGjevfoZ20j5wUEAgPi6SXolaukGS7+ntj07STPA7GWC51fP3uGBfBQWhExEuDe4Jflbi/KPMUEYITx2mAg/7v3cMDl714VsJMOsGqv1RNmVVbgrUwuTPzY5CgmU/kUsCGSZsd8LCqz6OIbIu8nLvsenrrKYIbSQc8mMbntRDj/7iJw9Tq2JKk0IhXNc6MRA3bvO0X1yuRdtkn9kVaxxQXHRVZrEJ4h9I83S1CJC8PwTDIkqjx1iIA4sI8xUUvQ3Avhl8QjD5RkG414c5PglwV1AOgJifOTs+3RpOi2ngnTYZW3nvtLlVZPKvUB12WI5lO2F2MLlhoKzXsoNxgMW3tOvkUydh4GpGVECo6MJ88zu/affuEypJQflYZf8FHDkD+y5fjHnx9DMrUBDV8UnQlRzCh4kW7M6+zvIIIAbnK3AgEwfzwnrKzdxcVWvcoirDays2Hc9JdTqllKGPfoCTRxizOEmVdIbnfxm20G7cYDe+G/tOtOCi/EEQ7Hr9q2QOPHff3nmlteHQbdcyGzryBoBjgnU=
+  on:
+    tags: true
+    branch: master

@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class Extension(ext.Extension):
 
-    dist_name = 'mopidy-irjukebox'
+    dist_name = 'Mopidy-Irjukebox'
     ext_name = 'irjukebox'
     version = __version__
 
@@ -38,11 +38,11 @@ class Extension(ext.Extension):
         #registry.add('frontend', FoobarFrontend)
 
         # TODO: Edit or remove entirely
-        from .backend import FoobarBackend
-        registry.add('backend', FoobarBackend)
+        from .actor import IrJukeboxBackend
+        registry.add('backend', IrJukeboxBackend)
 
         # TODO: Edit or remove entirely
-        registry.add('http:static', {
-            'name': self.ext_name,
-            'path': os.path.join(os.path.dirname(__file__), 'static'),
+##        registry.add('http:static', {
+##            'name': self.ext_name,
+##            'path': os.path.join(os.path.dirname(__file__), 'static'),
         })
